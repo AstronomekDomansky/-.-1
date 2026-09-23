@@ -1,0 +1,34 @@
+#include <list> 
+#include <iostream> 
+ 
+using namespace std; 
+ 
+ 
+template<class T> 
+void insert(list<T>& lst, T element) 
+{ 
+ list<T>::iterator p = lst.begin(); 
+ while (p != lst.end()) 
+ { 
+  if (*p > element) 
+   break; 
+  p++; 
+ }lst.insert(p, element);} 
+int main() 
+{ 
+ list<char> lst; 
+ int i=0; 
+ for(i=0;i<10;i+=2) 
+  lst.push_back('A' + i); 
+  
+ insert(lst, 'X'); 
+ list<char>::iterator p = lst.begin(); 
+ while(p!=lst.end()) 
+ { 
+  //перемещение по контейнеру с помощью указателя, нет 
+операции [i] 
+  cout<<*p<<""; 
+  p++; 
+ } 
+ return 0; 
+}
